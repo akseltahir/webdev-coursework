@@ -1,5 +1,6 @@
 class EchosController < ApplicationController
   before_action :set_echo, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /echos
   # GET /echos.json
@@ -14,7 +15,7 @@ class EchosController < ApplicationController
 
   # GET /echos/new
   def new
-    @echo = Echo.new
+    @echo = current_user.echos.build
   end
 
   # GET /echos/1/edit
@@ -24,11 +25,11 @@ class EchosController < ApplicationController
   # POST /echos
   # POST /echos.json
   def create
-    @echo = Echo.new(echo_params)
+    @echo = current_user.echos.build(echo_params) 
 
     respond_to do |format|
       if @echo.save
-        format.html { redirect_to @echo, notice: 'Echo was successfully created.' }
+        format.html { redirect_to @echo, notice: 'Echoed succesfully' }
         format.json { render :show, status: :created, location: @echo }
       else
         format.html { render :new }

@@ -17,8 +17,10 @@
         <td><%= echo.title %></td>
         <td><%= echo.content %></td>
         <td><%= link_to 'Show', echo %></td>
-        <td><%= link_to 'Edit', edit_echo_path(echo) %></td>
-        <td><%= link_to 'Destroy', echo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if echo.user == current_user %>
+          <td><%= link_to 'Edit', edit_echo_path(echo) %></td>
+          <td><%= link_to 'Destroy', echo, method: :delete, data: { confirm: 'You sure about that?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
