@@ -62,6 +62,18 @@ class EchosController < ApplicationController
     end
   end
 
+  def upvote
+    @echo = Echo.find(params[:id])
+    @echo.upvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
+  def downvote
+    @echo = Echo.find(params[:id])
+    @echo.downvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_echo

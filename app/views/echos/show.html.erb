@@ -14,4 +14,18 @@
     <%= link_to 'Edit', edit_echo_path(@echo), class: "btn btn-default" %>
     <%= link_to 'Destroy', @echo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
   </div>
+  
+  <div class="btn-group pull-right">
+   	<%= link_to upvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
+ 		<span class="glyphicon glyphicon-chevron-up"></span>
+ 		Upvote
+ 		<%= @echo.get_upvotes.size %>
+ 				<% end %>
+  	<%= link_to downvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
+  	<span class="glyphicon glyphicon-chevron-down"></span>
+  	Downvote
+  	<%= @echo.get_downvotes.size %>
+  	<% end %>
+ 	</div>
+
 <% end %>
