@@ -1,31 +1,19 @@
-<p id="notice"><%= notice %></p>
+<% @echos.each do |echo| %>
+  <div class="link row clearfix">
+    <h2>
+        <%= link_to echo.title, echo %><br>
 
-<h1>Echos</h1>
+        <div>
+          <% if echo.content.length > 100 -%>
+            <%= truncate(echo.content, length: 100) %>
+            <%= link_to '...Read more', echo %><br>
+          <% else %>
+            <%= echo.content %>
+          <% end %>
+        <div>
+        
+        <small class="author">Submitted <%= time_ago_in_words(echo.created_at) %> by <%= echo.user.email %></small>
+    </h2>
+  </div>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @echos.each do |echo| %>
-      <tr>
-        <td><%= echo.title %></td>
-        <td><%= echo.content %></td>
-        <td><%= link_to 'Show', echo %></td>
-        <% if echo.user == current_user %>
-          <td><%= link_to 'Edit', edit_echo_path(echo) %></td>
-          <td><%= link_to 'Destroy', echo, method: :delete, data: { confirm: 'You sure about that?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Echo', new_echo_path %>
