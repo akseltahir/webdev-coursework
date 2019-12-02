@@ -3,16 +3,20 @@
     <h2>
         <%= link_to echo.title, echo %><br>
 
-        <div>
-          <% if echo.content.length > 100 -%>
-            <%= truncate(echo.content, length: 100) %>
-            <%= link_to '...Read more', echo %><br>
-          <% else %>
-            <%= echo.content %>
-          <% end %>
-        <div>
-        
-        <small class="author">Submitted <%= time_ago_in_words(echo.created_at) %> by <%= echo.user.email %></small>
+          <div>
+            <% if echo.content.to_s.length > 50 -%>
+              <%= truncate(echo.content, length: 100) %>
+              <%= link_to '...Read more', echo %><br>
+            <% else %>
+              <%= echo.content %>
+            <% end %>
+          <div>
+
+        <% if echo.user.name=="" || echo.user.name == nil %>
+          <small class="author">Submitted <%= time_ago_in_words(echo.created_at) %> ago by <%= echo.user.email %></small>
+        <% else %>
+          <small class="author">Submitted <%= time_ago_in_words(echo.created_at) %> ago by <%= echo.user.name %></small>
+        <% end %>
     </h2>
 
     <div class="btn-group">
@@ -24,7 +28,7 @@
   				<% end %>
 
   				<%= link_to downvote_echo_path(echo), method: :put, class: "btn btn-default btn-sm" do %>
-  				<span class="glyphicon glyphicon-chevron-down"></span>
+  				<span class="glyphicon glyphicon-menu-down"></span>
   				Downvote
   				<%= echo.get_downvotes.size %>
   	  		<% end %>
