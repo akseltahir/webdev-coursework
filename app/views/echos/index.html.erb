@@ -1,23 +1,26 @@
 <% @echos.each do |echo| %>
-  <div class="link row clearfix">
-    <h2>
-        <%= link_to echo.title, echo %><br>
+    <div class="link row clearfix" id="echoContent">
+      <h2>
+        <span id=title span="wrap">
+          <%= link_to echo.title, echo %><br>
+        </span>
 
-          <div>
-            <% if echo.content.to_s.length > 50 -%>
-              <%= truncate(echo.content, length: 100) %>
-              <%= link_to '...Read more', echo %><br>
-            <% else %>
-              <%= echo.content %>
-            <% end %>
-          <div>
-
-        <% if echo.user.name=="" || echo.user.name == nil %>
-          <small class="author">Submitted <%= time_ago_in_words(echo.created_at) %> ago by <%= echo.user.email %></small>
-        <% else %>
-          <small class="author">Submitted <%= time_ago_in_words(echo.created_at) %> ago by <%= echo.user.name %></small>
-        <% end %>
-    </h2>
+        <div id="textPreview">
+          <% if echo.content.to_s.length > 50 -%>
+            <%= truncate(echo.content, length: 50) %>
+            <%= link_to 'Continue reading', echo %><br>
+          <% else %>
+            <%= echo.content %>
+          <% end %>
+        <div>
+        <div id="submitted">
+          <% if echo.user.name=="" || echo.user.name == nil %>
+            <small class="author">Submitted <%= time_ago_in_words(echo.created_at) %> ago by <%= echo.user.email %></small>
+          <% else %>
+            <small class="author">Submitted <%= time_ago_in_words(echo.created_at) %> ago by <%= echo.user.name %></small>
+          <% end %>
+        </div>
+      </h2>
 
     <div class="btn-group">
     

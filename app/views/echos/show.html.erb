@@ -1,41 +1,47 @@
-<div class="page-header">
-  <h1>
-    <%= @echo.title %></a><br>
+<div class="page-header" id="echoShow">
+
+  <h1 id="borders">
     <hr>
-    <%= @echo.content %></a><br>
 
-    <% if @echo.user.name=="" || @echo.user.name == nil %>
-      <small class="author">Submitted <%= time_ago_in_words(@echo.created_at) %> ago by <%= @echo.user.email %></small>
-    <% else %>
-      <small class="author">Submitted <%= time_ago_in_words(@echo.created_at) %> ago by <%= @echo.user.name %></small>
-    <% end %>
+    <div id="titleShow">
+      <%= @echo.title %>
+    </div>
 
+    <hr>
+
+    <div id="contentShow">
+      <%= @echo.content %>
+    </div>
+
+    <hr>
+
+    <div id="submittedShow">
+      <% if @echo.user.name=="" || @echo.user.name == nil %>
+        <p>Submitted <%= time_ago_in_words(@echo.created_at) %> ago by <%= @echo.user.email %></small>
+      <% else %>
+        <p>Submitted <%= time_ago_in_words(@echo.created_at) %> ago by <%= @echo.user.name %></small>
+      <% end %>
+      <hr id="invisiline">
+      <%= link_to upvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        Upvote
+        <%= @echo.get_upvotes.size %>
+      <% end %>
+      <%= link_to downvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-menu-down"></span>
+        Downvote
+        <%= @echo.get_downvotes.size %>
+      <% end %>
+
+      <% if @echo.user == current_user %>
+        <div class="btn-group pull-right">
+          <%= link_to 'Edit', edit_echo_path(@echo), class: "btn btn-default" %>
+          <%= link_to 'Delete', @echo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
   </h1>
 </div>
-<div class="btn-group">
-  <%= link_to 'Back', echos_path, class: "btn btn-primary" %>
-</div>
-
-<% if @echo.user == current_user %>
-  <div class="btn-group">
-    <%= link_to 'Edit', edit_echo_path(@echo), class: "btn btn-default" %>
-    <%= link_to 'Destroy', @echo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-  </div>
-  
-  <div class="btn-group pull-right">
-   	<%= link_to upvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
- 		<span class="glyphicon glyphicon-chevron-up"></span>
- 		Upvote
- 		<%= @echo.get_upvotes.size %>
- 				<% end %>
-  	<%= link_to downvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
-  	<span class="glyphicon glyphicon-menu-down"></span>
-  	Downvote
-  	<%= @echo.get_downvotes.size %>
-  	<% end %>
- 	</div>
-
-<% end %>
 
 <h3 class="comments_title">
   <%= @echo.comments.count %> comments
@@ -44,6 +50,7 @@
 <div id="comments">
   <%= render :partial => @echo.comments %>
 </div>
+
 <% if user_signed_in? -%>
   <%= simple_form_for [@echo, Comment.new] do |f| %>
     <div class="field">

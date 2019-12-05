@@ -15,45 +15,98 @@
  */
 
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
-@import "bootstrap";
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ 
+ #navbar {
+	 box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.22);
+	 background: rgb(241, 241, 241);
+	 position: sticky;
+	 top: 0;
+	 opacity: 80%;
+	 z-index: 1;
+	 transition: 0.2s;
+ }
+ #navbar:hover {
+	 box-shadow: 4px 10px 30px 0 rgba(0, 0, 0, 0.22);
+	 opacity: 100%;
+ }
+ 
+ #pButton {
+	 box-shadow: 0px 0px 0px 0 rgba(0, 0, 0, 0.22);
+	 background-color: #ddd;
+	 border: none;
+	 color: black;
+	 text-align: center;
+	 text-decoration: none;
+	 margin: 4px 2px;
+	 cursor: pointer;
+	 border-radius: 16px;
+	 transition: 0.2s;
+ }
+ #pButton:hover {
+	 box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.22);
+	 background-color: rgb(134, 161, 201);
+ }
 
-#logo {
-	font-size: 26px;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: -1px;
-	padding: 15px 0;
-	a {
-		color: rgb(7, 97, 231);
-	}
-}
-
-#main_content {
-	#content {
-		float: none;
-	}
-	padding-bottom: 100px;
-	.link {
-		padding: 2em 1em;
-		border-bottom: 1px solid #e9e9e9;
-		.title {
-
-			a {
-				color: #FF4500;
-			}
-		}
-    }
-    .comments_title {
-		margin-top: 2em;
-	}
-	#comments {
-		.comment {
-			padding: 1em 0;
-			border-top: 1px solid #E9E9E9;
-			.lead {
-				margin-bottom: 0;
-			}
-		}
-	}
-}
+ #logo {
+	 font-family: Arial, Helvetica, sans-serif;
+	 font-size: 25px;
+	 font-weight: 100;
+	 letter-spacing: 3px;
+	 padding: 15px 0;
+	 margin-left: 50px;
+	 a {
+		 color: rgb(46, 100, 180);
+	 }
+ }
+ 
+ #main_content {
+	 z-index: 0;
+	 position: relative;
+	 #content {
+		 float: none;
+	 }
+	 padding-bottom: 100px;
+	 .link {
+		 padding: 2em 1em;
+		 font-size: large;
+		 border-bottom: 1px solid #e9e9e9;
+		 .title {
+ 
+			 a {
+				 color: #FF4500;
+			 }
+		 }
+	 }
+	 .comments_title {
+		 margin-top: 2em;
+	 }
+	 #comments {
+		 .comment {
+			 padding: 1em 0;
+			 border-top: 1px solid #E9E9E9;
+			 .lead {
+				 margin-bottom: 0;
+			 }
+		 }
+	 }
+ }
+ 
+ @keyframes gradient {
+	 0% {
+		 background: rgb(233, 75, 75);
+	 }
+	 25% {
+		 background: rgb(133, 233, 75);
+	 }
+	 50% {
+		 background: rgb(75, 125, 233);
+	 }
+	 75% {
+		 background: rgb(151, 233, 75);
+	 }
+	 100% {
+		 background: rgb(233, 75, 75);
+	 }
+ }
