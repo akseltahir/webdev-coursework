@@ -11,17 +11,24 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :title %><br>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
+<div id="contentNew">
+  <div id="margins">
+    <div class="form-group">
+      <%= form.label :title %><br>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :content %><br>
-    <%= form.text_area :content, size: "100x10", class: "form-control"%>
+    <div class="form-group">
+      <%= form.label :content %><br>
+      <%= form.text_area :content, size: "100x10", class: "form-control"%>
+    </div>
+
+    <hr>
+
+    <div class="actions">
+      <%= form.submit "Make it heard", class: "btn btn-kg btn-primary pull-right" %>
+      <%= link_to "Back to Main Page", echos_path , class: "btn btn-default" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= link_to "Back to Main Page", echos_path , class: "btn btn-default" %>
-    <%= form.submit "Make it heard", class: "btn btn-kg btn-primary pull-right" %>
-  </div>
+</div>
 <% end %>
