@@ -3,10 +3,10 @@
     <div class="pull-left">
       <p class="lead"><%= comment.body %></p>
 
-      <% if @echo.user.name=="" || @echo.user.name == nil %>
-         <small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> ago by <%= @echo.user.email %></small>
+      <% if comment.user.name=="" || comment.user.name == nil %>
+         <small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> ago by <%= comment.user.email %></small>
       <% else %>
-        <small >Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> ago by <%= @echo.user.name %></small>
+        <small >Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> ago by <%= comment.user.name %></small>
       <% end %>
 
     </div>

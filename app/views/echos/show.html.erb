@@ -42,16 +42,8 @@
     </div>
   </h1>
 </div>
-
-<h3 class="comments_title">
-  <%= @echo.comments.count %> comments
-</h3>
-
-<div id="comments">
-  <%= render :partial => @echo.comments %>
-</div>
-
 <% if user_signed_in? -%>
+  <hr>
   <%= simple_form_for [@echo, Comment.new] do |f| %>
     <div class="field">
       <%= f.text_area :body, class: "form-control" %>
@@ -60,3 +52,11 @@
     <%= f.submit "Add Comment", class: "btn btn-primary" %>
   <% end %>
 <% end %>
+<hr>
+<h3 class="comments_title">
+  <%= @echo.comments.count %> comments
+</h3>
+
+<div id="comments">
+  <%= render :partial => @echo.comments %>
+</div>

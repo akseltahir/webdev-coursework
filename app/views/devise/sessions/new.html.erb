@@ -18,13 +18,12 @@
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
         </div>
-      <% end %>
+      <% end %>   
+      <hr id="invisiline">
+      <div class="form">
+        <%= f.submit "Log in", class: "btn btn-lg btn-primary"  %>
+      </div>
+      <%= render "devise/shared/links" %>
+    <% end %>
   </div>
 </div>
-<hr id="invisiline">
-<div>
-  <%= f.submit "Log in", class: "btn btn-lg btn-primary"  %>
-</div>
-<% end %>
-
-<%= render "devise/shared/links" %>
