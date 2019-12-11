@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  echo_id: 1
   body: MyText
   user: one
+  user_id: 1
 
 two:
-  echo_id: 2
   body: MyText1
   user: two1
+  user_id: 2

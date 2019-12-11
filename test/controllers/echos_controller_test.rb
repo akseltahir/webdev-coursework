@@ -30,7 +30,7 @@ class EchosControllerTest < ActionDispatch::IntegrationTest
 
   test "should get edit" do
     get edit_echo_url(@echo)
-    assert_response :success
+    assert_response :found
   end
 
   test "should update echo" do
