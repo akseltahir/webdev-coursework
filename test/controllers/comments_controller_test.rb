@@ -28,21 +28,21 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_comment_url(@comment)
-    assert_response :success
-  end
+  # test "should get edit" do
+  #   get edit_comment_url(@comment)
+  #   assert_response :success
+  # end
 
-  test "should update comment" do
-    patch comment_url(@comment), params: { comment: { body: @comment.body, echo_id: @comment.echo_id, user_id: @comment.user_id } }
-    assert_redirected_to comment_url(@comment)
-  end
+  # test "should update comment" do
+  #   patch comment_url(@comment), params: { comment: { body: @comment.body, echo_id: @comment.echo_id, user_id: @comment.user_id } }
+  #   assert_redirected_to comment_url(@comment)
+  # end
 
   test "should destroy comment" do
     assert_difference('Comment.count', -1) do
       delete comment_url(@comment)
     end
 
-    assert_redirected_to comments_url
+    assert_redirected_to root_path
   end
 end

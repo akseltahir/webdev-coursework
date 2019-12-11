@@ -17,7 +17,7 @@ class EchosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create echo" do
     assert_difference('Echo.count') do
-      post echos_url, params: { echo: { content: @echo.content, title: @echo.title } }
+      post echos_url, params: { echo: { content: 'Content', title: 'Title'} }
     end
 
     assert_redirected_to echo_url(Echo.last)

@@ -11,6 +11,7 @@ class EchosController < ApplicationController
   # GET /echos/1
   # GET /echos/1.json
   def show
+
   end
 
   # GET /echos/new
@@ -81,6 +82,7 @@ class EchosController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    #should email and name be there? theyre inherited from user    
     def echo_params
       params.require(:echo).permit(:title, :content)
     end

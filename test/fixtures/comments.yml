@@ -6,6 +6,6 @@ one:
   user: one
 
 two:
-  echo_id: 1
-  body: MyText
-  user: two
+  echo_id: 2
+  body: MyText1
+  user: two1
