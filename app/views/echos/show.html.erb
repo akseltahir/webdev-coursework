@@ -1,46 +1,42 @@
-<div class="page-header" id="echoShow">
+<div class="page-header" id="contentEcho">
 
-  <h1 id="borders">
-    <hr>
+  <div id="titleEcho">
+    <%= @echo.title %>
+  </div>
 
-    <div id="titleShow">
-      <%= @echo.title %>
-    </div>
+  <hr>
 
-    <hr>
+  <div id="textEcho">
+    <%= @echo.content %>
+  </div>
 
-    <div id="contentShow">
-      <%= @echo.content %>
-    </div>
+  <hr>
 
-    <hr>
+  <div id="submittedEcho">
+    <% if @echo.user.name=="" || @echo.user.name == nil %>
+      <p>Submitted <%= time_ago_in_words(@echo.created_at) %> ago by <%= @echo.user.email %></small>
+    <% else %>
+      <p>Submitted <%= time_ago_in_words(@echo.created_at) %> ago by <%= @echo.user.name %></small>
+    <% end %>
+    <hr id="invisiline">
+    <%= link_to upvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
+      <span class="glyphicon glyphicon-chevron-up"></span>
+      Upvote
+      <%= @echo.get_upvotes.size %>
+    <% end %>
+    <%= link_to downvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
+      <span class="glyphicon glyphicon-menu-down"></span>
+      Downvote
+      <%= @echo.get_downvotes.size %>
+    <% end %>
 
-    <div id="submittedShow">
-      <% if @echo.user.name=="" || @echo.user.name == nil %>
-        <p>Submitted <%= time_ago_in_words(@echo.created_at) %> ago by <%= @echo.user.email %></small>
-      <% else %>
-        <p>Submitted <%= time_ago_in_words(@echo.created_at) %> ago by <%= @echo.user.name %></small>
-      <% end %>
-      <hr id="invisiline">
-      <%= link_to upvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-up"></span>
-        Upvote
-        <%= @echo.get_upvotes.size %>
-      <% end %>
-      <%= link_to downvote_echo_path(@echo), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-menu-down"></span>
-        Downvote
-        <%= @echo.get_downvotes.size %>
-      <% end %>
-
-      <% if @echo.user == current_user %>
-        <div class="btn-group pull-right">
-          <%= link_to 'Edit', edit_echo_path(@echo), class: "btn btn-default" %>
-          <%= link_to 'Delete', @echo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-        </div>
-      <% end %>
-    </div>
-  </h1>
+    <% if @echo.user == current_user %>
+      <div class="btn-group pull-right">
+        <%= link_to 'Edit', edit_echo_path(@echo), class: "btn btn-default" %>
+        <%= link_to 'Delete', @echo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 <% if user_signed_in? -%>
   <hr>

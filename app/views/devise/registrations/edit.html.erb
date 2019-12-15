@@ -1,9 +1,8 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div id="contentNew">
-  <div id="margins">
-    <h2 id="titleNew">Edit User Account</h2>
+  <div id="contentEcho">
+    <h2 id="titleRegistration">Edit User Account</h2>
     <div class="form-inputs">
       <div class="form-group">
         <%= f.label :name %>
@@ -27,7 +26,7 @@
     </div>
   <% end %>
   <hr>
-  <h3 id="footerNew">Unhappy?</h3>
+  <h3 id="footerRegistration">Unhappy?</h3>
   <p>You can disable your account at any time</p>
   <%= button_to "Yes, silence my account", registration_path(resource_name), data: { confirm: "You sure about that?" }, method: :delete, class: "btn btn-default" %>
 </div>
