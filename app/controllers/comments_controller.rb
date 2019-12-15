@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @echo = Echo.find(comment_params[:echo_id])
+    @echo = Echo.find(params[:echo_id])
     @comment = @echo.comments.new(comment_params)
     @comment.user = current_user
 

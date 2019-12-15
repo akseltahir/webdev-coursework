@@ -13,15 +13,16 @@
       <div id="logo" class="navbar-brand"><%= link_to "Echo Chamber", root_path %></div>
       <% if user_signed_in? -%>
         <ul class="nav navbar-nav navbar-right">
-          <li id="pButton"><%= link_to 'Emit a new echo', new_echo_path %></li>
-          <li id="pButton"><%= link_to 'Account', edit_user_registration_path %></li>
-          <li id="pButton"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-          <li id="pButton"><%= link_to 'Contact Us!'%></li>
+          <li class="pButton"><%= link_to 'Emit a new echo', new_echo_path %></li>
+          <li class="pButton"><%= link_to 'Account', edit_user_registration_path %></li>
+          <li class="pButton"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+          <li class="pButton"><%= link_to 'Contact Us!', new_message_path%></li>
         </ul>
       <% else -%>
         <ul class="nav navbar-nav pull-right">
-          <li id="pButton"><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li id="pButton"><%= link_to 'Sign in', new_user_session_path %></li>
+          <li class="pButton"><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li class="pButton"><%= link_to 'Sign in', new_user_session_path %></li>
+          <li class="pButton"><%= link_to 'Contact Us!', new_message_path%></li>
         </ul>
       <% end -%>
     </nav>
