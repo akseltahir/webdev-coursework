@@ -8,9 +8,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
-  <header id ="navbar" class="navbar navbar-default" role="navigation">
-    <div id="logo" class="navbar-brand"><%= link_to "Echo Chamber", root_path %></div>
-    <nav class="collapse navbar-collapse navbar-ex1-collapse">
+  <header id ="navbar" class="navbar navbar-default">
+    <nav class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
+      <div id="logo" class="navbar-brand"><%= link_to "Echo Chamber", root_path %></div>
       <% if user_signed_in? -%>
         <ul class="nav navbar-nav navbar-right">
           <li id="pButton"><%= link_to 'Emit a new echo', new_echo_path %></li>
