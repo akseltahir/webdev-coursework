@@ -17,12 +17,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  # GET /comments/1/edit
-  #def edit
-  #end
-
   # POST /comments
   # POST /comments.json
+  # method to create a comment object and add it into the database
   def create
     @echo = Echo.find(params[:echo_id])
     @comment = @echo.comments.new(comment_params)
@@ -41,6 +38,7 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   # DELETE /comments/1.json
+  # delete comment from database
   def destroy
     @comment.destroy
     respond_to do |format|
@@ -55,7 +53,7 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # db parameters from the model to the controller
     def comment_params
       params.require(:comment).permit(:echo_id, :body, :user_id)
     end

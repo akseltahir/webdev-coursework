@@ -25,6 +25,7 @@ class EchosController < ApplicationController
 
   # POST /echos
   # POST /echos.json
+  # create new echo object and add it to the database using the echo parameters listed below
   def create
     @echo = current_user.echos.build(echo_params) 
 
