@@ -13,5 +13,13 @@ The so-called "echos" are text posts, submitted by the users. Any user may submi
 Each echo may have comments - users may submit many comments, but each comment belong to one user and one echo.
 The echos can be up/down-voted by users. Each user may cast one vote per echo. The vote can be changed at any time.
 
-I have already populated the website with a few users, echos and comments to get a view of how it would look as a real product.
-Run 
+To use: 
+    run 'rails db:migrate'
+    run 'rails s'
+    go to the specified localhost URL
+    The homescreen will prompt you to sign up or sign in. Sign up with a valid email and password.
+    Create a new post by clicking the "Emit a New Echo" button on the navigation bar.
+    Fill in the required fields.
+    Done! You can now comment, vote, edit, delete, make a new account, etc.
+
+github repository for this project can be found on: https://github.com/akseltahir/webdev-coursework
