@@ -2,14 +2,6 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
@@ -65,16 +57,57 @@
 
 #signinPrompt {
     box-shadow: 4px 10px 30px 0 rgba(0, 0, 0, 0.22);
-    background: rgb(163, 214, 139);
     border-radius: 30px;
     padding: 25px;
     margin: 30px;
-    align-content: center;
-    #joinUs {
+    text-align: center;
+    background: linear-gradient(110deg, #17dd30, #47dbd6, #bb61d5);
+    background-size: 600% 600%;
+    -webkit-animation: AnimationName 13s ease infinite;
+    -moz-animation: AnimationName 13s ease infinite;
+    animation: AnimationName 13s ease infinite;
+    @-webkit-keyframes AnimationName {
+        0% {
+            background-position: 0% 30%
+        }
+        50% {
+            background-position: 100% 71%
+        }
+        100% {
+            background-position: 0% 30%
+        }
+    }
+    @-moz-keyframes AnimationName {
+        0% {
+            background-position: 0% 30%
+        }
+        50% {
+            background-position: 100% 71%
+        }
+        100% {
+            background-position: 0% 30%
+        }
+    }
+    @keyframes AnimationName {
+        0% {
+            background-position: 0% 30%
+        }
+        50% {
+            background-position: 100% 71%
+        }
+        100% {
+            background-position: 0% 30%
+        }
+    }
+    .promptButtons {
         font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
         font-weight: 550;
-        font-size: 25px;
-        color: rgb(253, 253, 253);
+        a {
+            color: rgb(46, 100, 180);
+            text-transform: capitalize;
+        }
+        color: white;
     }
 }
 

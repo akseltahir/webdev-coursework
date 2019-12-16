@@ -13,49 +13,48 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
-<body>
-  <nav id ="navbar" class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">Options</button>
-      <div id="logo" class="navbar-brand"><%= link_to "Echo Chamber", root_path %></div>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right" id="buttonUl">
-        <% if user_signed_in? -%>
-        <ul class="nav navbar-nav">
-          <li class="pButton"><%= link_to 'Emit a new echo', new_echo_path %></li>
-          <li class="pButton"><%= link_to 'Account', edit_user_registration_path %></li>
-          <li class="pButton"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-          <li class="pButton"><%= link_to 'Contact Us!', new_message_path%></li>
-        </ul>
-        <% else -%>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="pButton"><%= link_to 'Sign up', new_user_registration_path %></li>
-            <li class="pButton"><%= link_to 'Sign in', new_user_session_path %></li>
-            <li class="pButton"><%= link_to 'Contact Us!', new_message_path%></li>
+  <body>
+    <%# screen-size responsive navbar %>
+    <nav id ="navbar" class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">Options</button>
+          <div id="logo" class="navbar-brand"><%= link_to "Echo Chamber", root_path %></div>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" id="buttonUl">
+            <% if user_signed_in? -%>
+              <ul class="nav navbar-nav">
+                <li class="pButton"><%= link_to 'Emit a new echo', new_echo_path %></li>
+                <li class="pButton"><%= link_to 'Account', edit_user_registration_path %></li>
+                <li class="pButton"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+                <li class="pButton"><%= link_to 'Contact Us!', new_message_path%></li>
+              </ul>
+            <% else -%>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="pButton"><%= link_to 'Contact Us!', new_message_path%></li>
+              </ul>
+            <% end -%>
           </ul>
-        <% end -%>
-      </ul>
-    </div>
-  </div>
-</nav>
-  <% if user_signed_in? -%>
-  <% else -%>
-  <div id="signinPrompt">
-    <p id="joinUs">sign in </p>
-  </div>
-  <% end -%>
-  <div id="main_content" class="container">
-    <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "alert alert-info") %>
-    <% end %>
+        </div>
+      </div>
+    </nav>
+    <%# sign in prompt %>
+    <% if not user_signed_in? -%>
+      <div id="signinPrompt">
+        <span class="promptButtons"><%= link_to 'Sign up', new_user_registration_path %> to join the Echo Chamber, or <%= link_to 'Sign in', new_user_session_path %></li>
+      </div>
+    <% end -%>
+    <%# echos lister %>
+    <div id="main_content" class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: "alert alert-info") %>
+      <% end %>
 
-      <div id="content" class="col-md-9 center-block">
-        <%= yield %>
+        <div id="content" class="col-md-9 center-block">
+          <%= yield %>
+        </div>
       </div>
     </div>
-  </div>
-  
-</body>
+  </body>
 </html>
